@@ -1,0 +1,13 @@
+.navicon {
+
+  -webkit-filter: drop-shadow(2px 2px 2px #666666);
+  filter: drop-shadow(2px 2px 2px #666666);
+}
+
+li .active{
+  background-color: red;
+  border-radius: 4px;
+  color: white;
+  font-weight: 600;
+  padding: 8px 8px;
+}
