@@ -1,0 +1,14 @@
+.fullcardhover:hover .cardDetailsbtn {
+    animation: jump 0.3s infinite alternate;
+}
+
+
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-5px);
+    }
+}
