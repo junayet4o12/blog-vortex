@@ -17,42 +17,42 @@ const Categories = () => {
                 </div>
             </div>
             <Marquee
-
+                
                 pauseOnHover={true}
-                speed={20}
+                speed={50}
             >
-                <div className="w-[250px] sm:w-[400px] mx-7">
+                <div className="w-[250px] sm:w-[400px] mx-7 ">
                     <div className=" p-2">
                         <h2 className="text-lg font-bold uppercase">Sports</h2>
-                        <p className="text-sm font-medium uppercase">Your Gateway to Sporting Excitement</p>
+                        <p className="text-sm font-medium overflow-hidden whitespace-nowrap">Your Gateway to Sporting Excitement</p>
                     </div >
                     <img className="w-full rounded-md h-[155px] sm:h-[250px]" src={sports} alt="" />
                 </div>
                 <div className="w-[250px] sm:w-[400px]  mx-7">
                     <div className=" p-2">
                         <h2 className="text-lg font-bold uppercase">Tourist</h2>
-                        <p className="text-sm font-medium">Explore the World with Us</p>
+                        <p className="text-sm font-medium overflow-hidden whitespace-nowrap">Explore the World with Us</p>
                     </div >
                     <img className="w-full rounded-md h-[155px]  sm:h-[250px] " src={tourist} alt="" />
                 </div>
                 <div className="w-[250px] sm:w-[400px]  mx-7">
                     <div className=" p-2">
                         <h2 className="text-lg font-bold uppercase">Finance</h2>
-                        <p className="text-sm font-medium">Your Guide to Financial Wellness</p>
+                        <p className="text-sm font-medium overflow-hidden whitespace-nowrap">Your Guide to Financial Wellness</p>
                     </div >
                     <img className="w-full rounded-md h-[155px] sm:h-[250px]" src={finance} alt="" />
                 </div>
                 <div className="w-[250px] sm:w-[400px]  mx-7">
                     <div className=" p-2">
                         <h2 className="text-lg font-bold uppercase">Food</h2>
-                        <p className="text-sm font-medium">Savoring Culinary Adventures</p>
+                        <p className="text-sm font-medium overflow-hidden whitespace-nowrap">Savoring Culinary Adventures</p>
                     </div >
                     <img className="w-full rounded-md h-[155px] sm:h-[250px]" src={food} alt="" />
                 </div>
                 <div className="w-[250px] sm:w-[400px]  mx-7">
                     <div className=" p-2">
                         <h2 className="text-lg font-bold uppercase">Technology</h2>
-                        <p className="text-sm font-medium"> Navigating the Digital Universe</p>
+                        <p className="text-sm font-medium overflow-hidden whitespace-nowrap"> Navigating the Digital Universe</p>
                     </div >
                     <img className="w-full rounded-md h-[155px] sm:h-[250px]" src={technology} alt="" />
                 </div>
@@ -60,9 +60,9 @@ const Categories = () => {
                 <div className="w-[250px] sm:w-[400px]  mx-7">
                     <div className=" p-2">
                         <h2 className="text-lg font-bold uppercase">Fashion</h2>
-                        <p className="text-sm font-medium"> Unveiling the Art of Fashione</p>
+                        <p className="text-sm font-medium overflow-hidden whitespace-nowrap"> Unveiling the Art of Fashione</p>
                     </div >
-                    <img className="w-full h-[155px] sm:h-[250px]" src={fashion} alt="" />
+                    <img className="w-full h-[155px] sm:h-[250px] rounded-md" src={fashion} alt="" />
                 </div>
 
             </Marquee>

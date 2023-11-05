@@ -3,7 +3,7 @@ import banner from '../../assets/BlogBanner.jpg'
 const Banner = () => {
     return (
         <div>
-            <div className=" min-h-screen bg-base-200 ">
+            <div className=" min-h-screen bg-base-200 pb-7 md:pb-0">
                 <div className="flex flex-col md:justify-between md:flex-row-reverse  ">
                     <div className='md:w-[55%] md:h-screen'>
                         <img src={banner} className="h-full object-cover" />
