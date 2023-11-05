@@ -29,7 +29,7 @@ const Footer = () => {
                     <img src={logo} alt="logo-ct" className="w-16" />
                    <h2 className="text-4xl font-bold">Blog Vortex</h2>
                 </div></div>
-            <footer className="relative w-full">
+            <div className="relative w-full">
                 <div className=" w-full px-8">
                     <div className="mx-auto grid w-full grid-cols-1 gap-8 py-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         {AllCategoris.map(({ Category: title, CategoryName: links }, key) => (
@@ -83,7 +83,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-            </footer>
+            </div>
         </div>
     );
 };

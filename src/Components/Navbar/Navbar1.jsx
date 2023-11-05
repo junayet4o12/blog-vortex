@@ -16,6 +16,7 @@ const Navbar1 = () => {
                 'May', 'June', 'July', 'August',
                 'September', 'October', 'November', 'December'
             ];
+            // console.log(Date.parse(date));
             let day = String(date.getDate()).padStart(2, '0')
             let month = monthNames[date.getMonth()].slice(0, 3)
             let fullyear = date.getFullYear()
