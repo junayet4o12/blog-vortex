@@ -1,21 +1,21 @@
 .homebtn {
-    background: #74e794;
+    background: #666766;
     color: white;
     font-weight: bold
 }
 
 .homebtn:hover {
-    background: #59e681;
+    background: #313231;
 }
 
 .backbtn {
-    background: #59d7e7;
-    color: white;
+    background: #dee1e1;
+    color: black;
     font-weight: bold
 }
 
 .backbtn:hover {
-    background: #3eb3d4;
+    background: #a1a4a4;
 }
 
 
