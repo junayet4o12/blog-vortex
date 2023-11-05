@@ -32,7 +32,8 @@ const Register = () => {
         const name = form.get('name');
         const email = form.get('email');
         const password = form.get('password');
-        if (!/^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z0-9\s!@#$%^&*(),.?":{}|<>]{6,}$/.test(password)) {
+        if (! /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d)[A-Za-z0-9\s!@#$%^&*(),.?":{}|<>]{6,}$/.test(password)) {
+            
             return setdoneerror(<p className="text-red-500">Password must be at least 6 characters long, contain at least one capital letter and special charecter.</p>)
         }
 

@@ -21,6 +21,7 @@ import { BiSolidAddToQueue } from 'react-icons/bi';
 import { CgDetailsMore } from 'react-icons/cg';
 import { useState } from 'react';
 import './AllBlogsCard.css'
+import { Link } from 'react-router-dom';
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
@@ -83,8 +84,10 @@ const AllBlogsCard = ({ blog }) => {
                     </Typography>
                 </div>
 
-                <CardActions className='flex justify-start items-center'>
-                    <button className='btn btn-xs btn-neutral flex gap-1 rounded-sm'><span className='text-lg'><CgDetailsMore></CgDetailsMore></span>Details</button>
+                <CardActions className='flex justify-start items-center gap-2'>
+                <Link to={`/details/${_id}`}>
+                        <button className='btn btn-xs btn-neutral flex gap-1 rounded-sm'><span className='text-lg'><CgDetailsMore></CgDetailsMore></span>Details</button>
+                    </Link>
                     <button className='btn  btn-neutral flex flex-row btn-xs gap-1 rounded-sm'><span className='text-lg '><BiSolidAddToQueue></BiSolidAddToQueue> </span>wishlist</button>
 
                 </CardActions>

@@ -8,17 +8,19 @@ import Footer from "./Footer";
 import NewsLetter from "./NewsLetter/NewsLetter";
 
 const Home = () => {
+   
     return (
-        <div>  
-           <Banner></Banner>
-           <Categories></Categories>
-           <Blogs></Blogs>
-           <NewsLetter></NewsLetter> 
-           <ContactUs></ContactUs>
-           <Footer></Footer>
-           
-           
-           
+        <div>
+            
+            <Banner></Banner>
+            <Categories></Categories>
+            <Blogs></Blogs>
+            <NewsLetter></NewsLetter>
+            <ContactUs></ContactUs>
+            <Footer></Footer>
+
+
+
         </div>
     );
 };

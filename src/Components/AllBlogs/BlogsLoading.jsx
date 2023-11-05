@@ -67,7 +67,7 @@ const BlogsLoading = () => {
                     <Skeleton variant="rounded" width={70} height={20} />
                 </div>
             </div>
-            
+             
         </div>
     );
 };

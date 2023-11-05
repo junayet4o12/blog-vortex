@@ -13,6 +13,7 @@ import { red } from '@mui/material/colors';
 
 import { BiSolidAddToQueue } from 'react-icons/bi';
 import { CgDetailsMore } from 'react-icons/cg';
+import { Link } from 'react-router-dom';
 
 
 
@@ -45,30 +46,32 @@ const BlogCard = ({ blog }) => {
                     title={posterName}
                     subheader={`${month} ${day}, ${year}`}
                 />
-                
-                    <Typography variant="body2" color="text.secondary" fontWeight="bold" fontSize="18px" padding="5px">
-                        {category}
-                    </Typography>
-                
+
+                <Typography variant="body2" color="text.secondary" fontWeight="bold" fontSize="18px" padding="5px">
+                    {category}
+                </Typography>
+
                 <CardMedia
                     component="img"
                     className='h-[250px] '
                     image={img}
                     alt="Paella dish"
                 />
-                
-                    <Typography variant="body2" color="text.secondary" fontWeight="bold" fontSize="18px" padding={`10px 15px`}>
-                        {title}
-                    </Typography>
-                
-                
-                    <Typography  paddingX={` 15px`} variant="body2" color="text.secondary">
-                        {short_description}
-                    </Typography>
-                
-                <CardActions className='flex justify-start items-center'>
-                   <button className='btn btn-xs btn-neutral flex gap-1 rounded-sm'><span className='text-lg'><CgDetailsMore></CgDetailsMore></span>Details</button>
-                   <button className='btn  btn-neutral flex flex-row btn-xs gap-1 rounded-sm'><span className='text-lg '><BiSolidAddToQueue></BiSolidAddToQueue> </span>wishlist</button>
+
+                <Typography variant="body2" color="text.secondary" fontWeight="bold" fontSize="18px" padding={`10px 15px`}>
+                    {title}
+                </Typography>
+
+
+                <Typography paddingX={` 15px`} variant="body2" color="text.secondary">
+                    {short_description}
+                </Typography>
+
+                <CardActions className='flex justify-start items-center gap-2'>
+                    <Link to={`/details/${_id}`}>
+                        <button className='btn btn-xs btn-neutral flex gap-1 rounded-sm'><span className='text-lg'><CgDetailsMore></CgDetailsMore></span>Details</button>
+                    </Link>
+                    <button className='btn  btn-neutral flex flex-row btn-xs gap-1 rounded-sm'><span className='text-lg '><BiSolidAddToQueue></BiSolidAddToQueue> </span>wishlist</button>
 
                 </CardActions>
 
