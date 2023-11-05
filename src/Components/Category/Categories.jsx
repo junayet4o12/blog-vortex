@@ -24,7 +24,7 @@ const Categories = () => {
                 <div className="w-[250px] sm:w-[400px] mx-7">
                     <div className=" p-2">
                         <h2 className="text-lg font-bold uppercase">Sports</h2>
-                        <p className="text-sm font-medium">Your Gateway to Sporting Excitement</p>
+                        <p className="text-sm font-medium uppercase">Your Gateway to Sporting Excitement</p>
                     </div >
                     <img className="w-full rounded-md h-[155px] sm:h-[250px]" src={sports} alt="" />
                 </div>
