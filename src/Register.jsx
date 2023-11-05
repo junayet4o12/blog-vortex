@@ -4,14 +4,14 @@ import { RiLockPasswordLine } from 'react-icons/ri';
 import { GiArchiveRegister } from 'react-icons/gi';
 import { MdLogin, MdOutlineDriveFileRenameOutline } from 'react-icons/md';
 import { FcGoogle } from 'react-icons/fc';
-import {  useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { updateProfile } from 'firebase/auth';
 import { AuthContext } from './Authantication/AuthProviders';
 import auth from './Authantication/firebase.config';
-
+import registerimg from './assets/register.svg'
 
 const Register = () => {
     const [doneerror, setdoneerror] = useState('')
@@ -87,12 +87,17 @@ const Register = () => {
             })
     }
     return (
-        <div className="py-7 px-7">
+        <div className="py-7 px-7 flex ">
+            <div className='w-[50%]  justify-center hidden lg:block items-center'>
+                <div className='h-full flex justify-center items-center'>
+                    <img className='w-[500px] h-[400px]  object-cover' src={registerimg} alt="" />
+                </div>
+            </div>
             <form onSubmit={handlesubmit} className="max-w-[550px] bg-gray-500 mx-auto ">
                 <div className=" bg-gradient-to-b from-gray-900  to-gray-300 py-10">
-                  <h1 className='text-white font-medium text-3xl text-center uppercase'>Wc to registration</h1>
-                  
-                  <p className='font-bold text-sm text-white text-center max-w-[400px] px-3 mx-auto pt-4'>If you don&apos;t have an account, please complete the registration form below to create a user account. This will provide you with access to our platform and services.</p>  
+                    <h1 className='text-white font-medium text-3xl text-center uppercase'>Wc to registration</h1>
+
+                    <p className='font-bold text-sm text-white text-center max-w-[400px] px-3 mx-auto pt-4'>If you don&apos;t have an account, please complete the registration form below to create a user account. This will provide you with access to our platform and services.</p>
                 </div>
                 <div className="mx-auto w-[100%] p-5 bg-gray-200 pb-10 text-black  ">
                     <h2 className="text-3xl font-bold uppercase  text-center mb-6 text-gray-600 ">User Register</h2>
@@ -106,13 +111,13 @@ const Register = () => {
                             <p className='text-xl absolute top-3.5 left-3 '><HiOutlineMail></HiOutlineMail></p>
                         </div>
                         <div className="relative w-full sm:w-[450px]">
-                            <input required onChange={handlepassvalue} type={showpass ? 'password' : 'text'}  name="password" className="w-full  sm:w-[450px]  bg-gray-50 p-3 px-10 rounded-3xl "  placeholder="password" />
+                            <input required onChange={handlepassvalue} type={showpass ? 'password' : 'text'} name="password" className="w-full  sm:w-[450px]  bg-gray-50 p-3 px-10 rounded-3xl " placeholder="password" />
                             <p className='text-xl absolute top-3 left-3 '><RiLockPasswordLine></RiLockPasswordLine></p>
-                            <p  onClick={() => (setshowpass(!showpass))} className={`absolute top-2 right-0 mr-2 cursor-pointer text-lg  p-1 ${!passvalue && 'hidden'}`}>{showpass ? <AiOutlineEye></AiOutlineEye> : <AiOutlineEyeInvisible></AiOutlineEyeInvisible>}</p>
+                            <p onClick={() => (setshowpass(!showpass))} className={`absolute top-2 right-0 mr-2 cursor-pointer text-lg  p-1 ${!passvalue && 'hidden'}`}>{showpass ? <AiOutlineEye></AiOutlineEye> : <AiOutlineEyeInvisible></AiOutlineEyeInvisible>}</p>
                             <div className="text-sm font-bold">{doneerror}</div>
                             <div className='flex justify-between p-2 '>
                                 <p className='text-sm font-medium'>Already have an Account? <br /> <Link to='/login'><span className='font-bold Register text-gray-700 hover:text-gray-900 cursor-pointer flex gap-1 hover:underline items-center'><MdLogin></MdLogin>Log in</span></Link></p>
-                                
+
                             </div>
                         </div>
                         <div className='w-full flex flex-col  justify-center items-center gap-2'>

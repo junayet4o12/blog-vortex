@@ -9,7 +9,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { AuthContext } from './Authantication/AuthProviders';
-
+import loginimg from './assets/login.svg'
 
 const Login = () => {
     const [doneerror, setdoneerror] = useState('')
@@ -71,7 +71,12 @@ const Login = () => {
             })
     }
     return (
-        <div className="py-7 px-7">
+        <div className="py-7 px-7 flex ">
+            <div className='w-[50%]  justify-center hidden lg:block items-center'>
+                <div className='h-full flex justify-center items-center'>
+                <img  className='w-[500px] h-[400px]  object-cover' src={loginimg} alt="" />
+                </div>
+            </div>
             <form onSubmit={handlesubmit} className="max-w-[550px] bg-blue-500 mx-auto ">
                 <div className=" bg-gradient-to-b from-gray-900  to-gray-300 py-10">
                     <h1 className='text-white font-medium text-3xl text-center uppercase'>hello and welcome</h1>

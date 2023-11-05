@@ -1,0 +1,45 @@
+.homebtn {
+    background: #74e794;
+    color: white;
+    font-weight: bold
+}
+
+.homebtn:hover {
+    background: #59e681;
+}
+
+.backbtn {
+    background: #59d7e7;
+    color: white;
+    font-weight: bold
+}
+
+.backbtn:hover {
+    background: #3eb3d4;
+}
+
+
+.part1 {
+    animation: rotateAnimation3 13s linear infinite;
+    transform-origin: center;
+}
+
+@keyframes rotateAnimation3 {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    25% {
+      transform: rotate(5deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+  
+    75% {
+      transform: rotate(5deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }

@@ -6,6 +6,7 @@ import { MdLibraryAdd, MdFeaturedPlayList } from 'react-icons/md';
 import { BsReplyAllFill } from 'react-icons/bs';
 import { TbListSearch } from 'react-icons/tb';
 import { RiLogoutBoxLine } from 'react-icons/ri';
+import { LuLogIn } from 'react-icons/lu';
 import './Navbar2.css'
 import bloglogo from '../../assets/BlogLogo.png'
 import { Link, NavLink } from 'react-router-dom';
@@ -19,6 +20,9 @@ const Navbar2 = () => {
         <li> <NavLink className=' hover:underline hover:bg-transparent font-medium' to='/allblogs'><span className='text-base rotate-180'><BsReplyAllFill></BsReplyAllFill></span>All Blogs</NavLink> </li>
         <li> <NavLink className=' hover:underline hover:bg-transparent font-medium' to='/featuredblogs'><span className='text-base'><MdFeaturedPlayList></MdFeaturedPlayList></span>Featured Blogs</NavLink> </li>
         <li> <NavLink className=' hover:underline hover:bg-transparent font-medium' to='/wishlist'><span className='text-base'><TbListSearch></TbListSearch></span>Wishlist</NavLink> </li>
+        {
+            user ? '' : <li> <NavLink className=' hover:underline hover:bg-transparent font-medium' to='/login'><span className='text-base'><LuLogIn></LuLogIn></span>LogIn</NavLink> </li>
+        }
     </>
     return (
         <div>
@@ -55,7 +59,7 @@ const Navbar2 = () => {
                                     <div className='w-10 h-10 rounded-full bg-white overflow-hidden'>
                                         <img className="w-full h-full" src={user.photoURL ? user.photoURL : ''} alt="" />
                                     </div>
-                                   
+
                                 </div>
                                 <p onClick={() => logout()} className={`btn flex flex-col justify-center items-center   w-max   font-bold border-none bg-[#b23b3b] text-white hover:bg-[#d33333] gap-1`}><span>logOut</span><span className="text-lg"><RiLogoutBoxLine></RiLogoutBoxLine></span></p>
 
