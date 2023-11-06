@@ -7,16 +7,12 @@ import manhalf2 from '../../assets/manhalf2.svg'
 import './error.css'
 const Error404 = () => {
     const error = useRouteError();
-    console.error(error);
+    
     const nevigate = useNavigate();
     const handleback = () => {
         nevigate(-1);
     }
-    const btndesign = {
-        backgroundColor: '#74e794',
-        color: 'white',
-        fontWeight: 'bold'
-    }
+    
 
     return (
         <div id="error-page" className="flex flex-col lg:flex-row justify-center items-center gap-5  bg-white">
@@ -34,7 +30,7 @@ const Error404 = () => {
 
                 <p className="text-center text-xl font-medium">Sorry, an unexpected error has occurred.</p>
                 <p className="text-center">
-                    <i className="text-center text-xl font-normal">{error.statusText || error.message}</i>
+                    <i className="text-center text-xl font-normal">{error?.statusText || error?.message}</i>
                 </p>
                 <div className="text-center flex gap-3">
                     <button onClick={handleback} className="btn  backbtn">Go back</button>

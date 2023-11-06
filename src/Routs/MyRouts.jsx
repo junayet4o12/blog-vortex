@@ -10,6 +10,7 @@ import AllBlogs from "../Components/AllBlogs/AllBlogs";
 import BlogDetails from "../Components/BlogDetails";
 import AddBlogs from "../Components/AddBlogs/AddBlogs";
 import UpdateBlog from "../Components/UpdateBlog/UpdateBlog";
+import FeaturesBlog from "../Components/FeatureBlogs/FeaturesBlog";
 
 const MyRouts = createBrowserRouter([
   {
@@ -30,6 +31,11 @@ const MyRouts = createBrowserRouter([
       {
         path: '/addblog',
         element: <AddBlogs></AddBlogs>,
+
+      },
+      {
+        path: '/featuredblogs',
+        element: <FeaturesBlog></FeaturesBlog>,
 
       },
       {
