@@ -41,6 +41,14 @@ const AddBlogs = () => {
             .then(res => {
                 console.log(res.data);
                 toast.success('Blog Added Successfully')
+                form.title.value= '';
+                form.shortDescription.value= '';
+                form.longDescription.value= '';
+
+                
+                form.imgUrl.value= '';
+                setblogcategory('')
+
             })
     }
     return (

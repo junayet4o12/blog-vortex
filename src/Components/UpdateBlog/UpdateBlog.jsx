@@ -18,7 +18,7 @@ const UpdateBlog = () => {
         setblogcategory(e.target.value)
     }
     console.log(id);
-    const {data, isLoading} = useQuery({
+    const {data, isLoading, refetch} = useQuery({
         queryKey: ['updatedblogdatacome'],
         queryFn: () => fetch(`http://localhost:3000/api/v1/signleblog/${id}`)
             .then(res => res.json())
@@ -36,10 +36,12 @@ const UpdateBlog = () => {
         const form = e.target;
 
         const title = form.title.value;
-        const short_description = form.shortDescription.value;
-        const long_description = form.longDescription.value;
+        // const short_description = form.shortDescription.value;
+        const short_description = form.shortDescription.value == '' ? data.short_description : form.shortDescription.value
+        // const long_description = form.longDescription.value;
+       const long_description = form.longDescription.value == '' ? data.long_description : form.longDescription.value
 
-        const category = blogcategory;
+        const category = (blogcategory == '')? data.category : blogcategory;
         const img = form.imgUrl.value;
         const posterImg = user?.photoURL;
         const posterName = user?.displayName;
@@ -57,10 +59,13 @@ const UpdateBlog = () => {
             post_date
         }
         console.log(blog);
-        axios.post('http://localhost:3000/api/v1/allblogs', blog)
+        axios.put(`http://localhost:3000/api/v1/signleblog/${id}`, blog)
             .then(res => {
                 console.log(res.data);
-                toast.success('Blog Added Successfully')
+                toast.success('Blog Updated Successfully')
+                form.shortDescription.value= '';
+                form.longDescription.value= '';
+                refetch()
             })
     }
     return (
@@ -78,7 +83,7 @@ const UpdateBlog = () => {
                 </div>
                 <form style={{ backgroundImage: `url(${formbg})` }} onSubmit={handlesubmit} className="bg-cover bg-center   rounded-md font-bold text-sm w-full max-w-[550px]   mx-auto flex flex-col gap-3 border-[1.5px] border-gray-400 shadow-xl shadow-[#bdb9b9]">
                     <div className='h-full w-full p-4 py-7 flex flex-col bg-[#ffffffb3] gap-5 rounded-md '>
-                        <h2 className='text-4xl font-bold text-center py-5'>Create Your Own Blog</h2>
+                        <h2 className='text-4xl font-bold text-center py-5'>Update Your Own Blog</h2>
                         <div className='flex gap-4 flex-col '>
                             <div className="relative h-11 w-full min-w-[200px]">
                                 <input defaultValue={data.title} name='title' required
@@ -119,21 +124,21 @@ const UpdateBlog = () => {
                         </div>
 
                         <div className="relative h-[100px] w-full min-w-[200px]">
-                            <textarea defaultValue={data.short_description} name='shortDescription' required
-                                className="font-bold w-full   border-black h-full px-3 py-3 font-sans text-sm transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent text-black outline outline-0 placeholder-shown:border-[1.5px] placeholder-shown:border-blue-black placeholder-shown:border-black focus:border-2 focus:border-black focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-black"
-                                placeholder=" "
+                            <textarea  name='shortDescription'
+                                className="font-bold w-full   border-black h-full px-3 py-5 font-sans text-sm transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent text-black outline outline-0 placeholder-shown:border-[1.5px] placeholder-shown:border-blue-black placeholder-shown:border-black focus:border-2 focus:border-black focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-black"
+                                defaultValue=''  placeholder={(data.short_description).length>70? (data.short_description).slice(0,70) + '...' : data.short_description}
                             ></textarea>
                             <label className="font-bold before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-black before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-black after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-black peer-placeholder-shown:after:border-black peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-black peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-black peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-black peer-disabled:text-transparent peer-disabled:before:border-black peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                                <span className='font-bold'>Short Description</span>
+                                <span className='font-bold mt-[-10px]'>Short Description</span>
                             </label>
                         </div>
                         <div className="relative h-[170px] w-full min-w-[200px]">
-                            <textarea  defaultValue={data.long_description} name='longDescription' required
-                                className="font-bold w-full   border-black h-full px-3 py-3 font-sans text-sm transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent text-black outline outline-0 placeholder-shown:border-[1.5px] placeholder-shown:border-blue-black placeholder-shown:border-black focus:border-2 focus:border-black focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-black"
-                                placeholder=" "
+                            <textarea   name='longDescription'
+                                className="font-bold w-full   border-black h-full px-3 py-5 font-sans text-sm transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent text-black outline outline-0 placeholder-shown:border-[1.5px] placeholder-shown:border-blue-black placeholder-shown:border-black focus:border-2 focus:border-black focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-black"
+                                defaultValue=''  placeholder={(data.long_description).length>150 ? (data.long_description).slice(0,150) + '...' : data.long_description}
                             ></textarea>
                             <label className="font-bold before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-black before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-black after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-black peer-placeholder-shown:after:border-black peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-black peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-black peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-black peer-disabled:text-transparent peer-disabled:before:border-black peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                                <span className='font-bold'> Long Description</span>
+                                <span className='font-bold mt-[-10px]'> Long Description</span>
                             </label>
                         </div>
                         <div className='text-center'>
