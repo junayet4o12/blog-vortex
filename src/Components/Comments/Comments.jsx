@@ -36,14 +36,14 @@ const Comments = ({ data, sethituseeffect, hituseeffect }) => {
     return (
         <div>
             <div>
-                <h2 className="text-lg font-bold text-center py-5">Comment you thought with free mind</h2>
+                <h2 className="text-lg font-bold text-center py-5">Comment your thought with free mind</h2>
 
                 <form onSubmit={handlesubmit}>
                     <div className="flex justify-center items-center">
                         <textarea name="comment" className="textarea textarea-bordered w-[300px] sm:w-[500px] h-[150px] font-medium" placeholder="Write your comment " required></textarea>
                     </div>
                     <div className="text-center py-3">
-                        <button className="btn btn-neutral bg-black font-bold text-sm">Send Comments</button>
+                        <button className="btn btn-neutral bg-black font-bold text-sm">Send Comment</button>
                     </div>
                 </form>
             </div>

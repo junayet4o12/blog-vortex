@@ -12,7 +12,7 @@ import { AuthContext } from './Authantication/AuthProviders';
 import loginimg from './assets/login.svg'
 
 const Login = () => {
-    const [doneerror, setdoneerror] = useState('')
+    const [loggedinuser, setloggedinuser] = useState('')
     const [showpass, setshowpass] = useState(true);
     const [passvalue, setpassvalue] = useState(null)
     const { loginuser, googlelogin } = useContext(AuthContext);
@@ -25,7 +25,7 @@ const Login = () => {
     }
     const handlesubmit = (e) => {
         e.preventDefault()
-        setdoneerror('');
+        setloggedinuser('');
         const form = new FormData(e.currentTarget);
         const email = form.get('email');
         const password = form.get('password');
@@ -46,7 +46,7 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
-                setdoneerror(<p className="text-red-500">Something else in email or password..</p>)
+                setloggedinuser(<p className="text-red-500">Something else in email or password..</p>)
             })
     }
 
@@ -67,7 +67,7 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
-                setdoneerror(<p className="text-red-500">{error.message.split('/')[1].split(')')[0].replace(/-/g, ' ')}</p>)
+                setloggedinuser(<p className="text-red-500">{error.message.split('/')[1].split(')')[0].replace(/-/g, ' ')}</p>)
             })
     }
     return (
@@ -94,7 +94,7 @@ const Login = () => {
                             <input required onChange={handlepassvalue} type={showpass ? 'password' : 'text'} name="password" className="w-full  sm:w-[450px]  bg-gray-50 p-3 px-10 rounded-3xl " placeholder="password" />
                             <p className='text-xl absolute top-3 left-3 '><RiLockPasswordLine></RiLockPasswordLine></p>
                             <p onClick={() => (setshowpass(!showpass))} className={`absolute top-2 right-0 mr-2 cursor-pointer text-lg  p-1 ${!passvalue && 'hidden'}`}>{showpass ? <AiOutlineEye></AiOutlineEye> : <AiOutlineEyeInvisible></AiOutlineEyeInvisible>}</p>
-                            <div className="text-sm font-bold">{doneerror}</div>
+                            <div className="text-sm font-bold">{loggedinuser}</div>
                             <div className='flex justify-between p-2 gap-3'>
                                 <p className='text-sm font-medium'>Don&apos;t have an Account? <br /> <Link to='/register'><span className='font-bold Register text-gray-700 hover:text-gray-900 cursor-pointer flex gap-1 hover:underline items-center'><GiArchiveRegister></GiArchiveRegister>Register</span></Link></p>
                                 <p className='text-sm font-medium '>Forgot password?</p>

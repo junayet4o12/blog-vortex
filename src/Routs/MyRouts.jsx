@@ -8,6 +8,8 @@ import Register from "../Register";
 import Error404 from "../Components/404/Error404";
 import AllBlogs from "../Components/AllBlogs/AllBlogs";
 import BlogDetails from "../Components/BlogDetails";
+import AddBlogs from "../Components/AddBlogs/AddBlogs";
+import UpdateBlog from "../Components/UpdateBlog/UpdateBlog";
 
 const MyRouts = createBrowserRouter([
   {
@@ -23,6 +25,16 @@ const MyRouts = createBrowserRouter([
       {
         path: '/allblogs',
         element: <AllBlogs></AllBlogs>,
+
+      },
+      {
+        path: '/addblog',
+        element: <AddBlogs></AddBlogs>,
+
+      },
+      {
+        path: '/updateblog/:id',
+        element: <UpdateBlog></UpdateBlog>,
 
       },
       {
