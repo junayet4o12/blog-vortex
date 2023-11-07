@@ -11,6 +11,7 @@ import BlogDetails from "../Components/BlogDetails";
 import AddBlogs from "../Components/AddBlogs/AddBlogs";
 import UpdateBlog from "../Components/UpdateBlog/UpdateBlog";
 import FeaturesBlog from "../Components/FeatureBlogs/FeaturesBlog";
+import Wishlist from "../Components/Wishlist/Wishlist";
 
 const MyRouts = createBrowserRouter([
   {
@@ -36,6 +37,11 @@ const MyRouts = createBrowserRouter([
       {
         path: '/featuredblogs',
         element: <FeaturesBlog></FeaturesBlog>,
+
+      },
+      {
+        path: '/wishlist',
+        element: <Wishlist></Wishlist>,
 
       },
       {

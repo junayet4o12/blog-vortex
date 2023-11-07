@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 // import React from 'react';
-
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -11,19 +10,17 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 
 
-import { BiSolidAddToQueue } from 'react-icons/bi';
+import {  RiDeleteBin6Fill } from 'react-icons/ri';
 import { CgDetailsMore } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../../../Authantication/AuthProviders';
+// import { AuthContext } from '../../../Authantication/AuthProviders';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-
-
-
-const BlogCard = ({ blog }) => {
-    const { user } = useContext(AuthContext)
-    const { posterImg, img, _id, title, short_description, long_description, category, posterName, email, post_date } = blog;
+const WishlistCard = ({datum, setrefetch, refetch}) => {
+    // console.log(setrefetch, refetch);
+    
+    const { posterImg, img, _id, title, short_description,  category, posterName,  post_date,blogid } =datum;
+    console.log(_id);
     const monthNames = [
         'January', 'February', 'March', 'April',
         'May', 'June', 'July', 'August',
@@ -33,31 +30,15 @@ const BlogCard = ({ blog }) => {
     const year = date.getFullYear();
     const month = monthNames[date.getMonth()];
     const day = date.getDate();
-    const handlewishlist = () => {
-        if (!user?.email) {
-            return toast.error('Please Log in first!!!')
-        }
-
-        const newblog = {
-            posterImg,
-            blogid: _id,
-            img,
-            title,
-            short_description,
-            long_description,
-            category,
-            posterName,
-            email,
-            post_date,
-            listerUser: user?.email
-        }
-
-        axios.post('http://localhost:3000/api/v1/wishlistBlog', newblog)
-            .then(res => {
-                console.log(res.data);
-                toast.success('Add to Wishlist successfully!!!')
-            })
+    const handleDelete = () => {
+      axios.delete(`http://localhost:3000/api/v1/wishlistBlog/${_id}`) 
+      .then(res=>{
+        console.log(res.data);
+        toast.success('Deleted Successfullly!!')
+        setrefetch(refetch+1)
+      })  
     }
+   
     return (
         <div>
             <Card sx={{ maxWidth: 345 }}>
@@ -93,10 +74,10 @@ const BlogCard = ({ blog }) => {
                 </Typography>
 
                 <CardActions className='flex justify-start items-center gap-2'>
-                    <Link to={`/details/${_id}`}>
+                    <Link to={`/details/${blogid}`}>
                         <button className='btn btn-xs btn-neutral flex gap-1 rounded-sm'><span className='text-lg'><CgDetailsMore></CgDetailsMore></span>Details</button>
                     </Link>
-                    <button onClick={handlewishlist} className='btn  btn-neutral flex flex-row btn-xs gap-1 rounded-sm'><span className='text-lg '><BiSolidAddToQueue></BiSolidAddToQueue> </span>wishlist</button>
+                    <button onClick={handleDelete} className='btn  btn-neutral flex flex-row btn-xs gap-1 rounded-sm'><span className='text-base '><RiDeleteBin6Fill></RiDeleteBin6Fill> </span>Delete</button>
 
                 </CardActions>
 
@@ -105,4 +86,4 @@ const BlogCard = ({ blog }) => {
     );
 };
 
-export default BlogCard;
+export default WishlistCard;

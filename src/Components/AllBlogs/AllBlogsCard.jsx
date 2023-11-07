@@ -11,10 +11,9 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
+
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+
 
 
 import { BiSolidAddToQueue } from 'react-icons/bi';
@@ -22,8 +21,12 @@ import { CgDetailsMore } from 'react-icons/cg';
 import { useState } from 'react';
 import './AllBlogsCard.css'
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../Authantication/AuthProviders';
+import toast from 'react-hot-toast';
+import axios from 'axios';
 const ExpandMore = styled((props) => {
-    const { expand, ...other } = props;
+    const {  ...other } = props;
     return <IconButton {...other} />;
 })(({ theme, expand }) => ({
     transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
@@ -33,6 +36,7 @@ const ExpandMore = styled((props) => {
     }),
 }));
 const AllBlogsCard = ({ blog }) => {
+    const {user} = useContext(AuthContext);
     const [jumpbtn, setjumpbtn] = useState(true);
     const { posterImg, img, _id, title, short_description, long_description, category, posterName, email, post_date } = blog;
     const monthNames = [
@@ -48,6 +52,32 @@ const AllBlogsCard = ({ blog }) => {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
+    const handlewishlist = () => {
+        if (!user?.email) {
+            return toast.error('Please Log in first!!!')
+        }
+
+        const newblog = {
+            posterImg,
+             img,
+             title,
+             blogid: _id,
+             short_description,
+             long_description,
+             category,
+             posterName,
+             email,
+             post_date, 
+             listerUser : user?.email
+        }
+        
+        axios.post('http://localhost:3000/api/v1/wishlistBlog', newblog)
+            .then(res => {
+                console.log(res.data);
+                toast.success('Add to Wishlist successfully!!!')
+            })
+    }
     return (
         <div className='fullcardhover'>
             <Card sx={{ maxWidth: 345 }}>
@@ -88,7 +118,7 @@ const AllBlogsCard = ({ blog }) => {
                 <Link to={`/details/${_id}`}>
                         <button className='btn btn-xs btn-neutral flex gap-1 rounded-sm'><span className='text-lg'><CgDetailsMore></CgDetailsMore></span>Details</button>
                     </Link>
-                    <button className='btn  btn-neutral flex flex-row btn-xs gap-1 rounded-sm'><span className='text-lg '><BiSolidAddToQueue></BiSolidAddToQueue> </span>wishlist</button>
+                    <button onClick={handlewishlist} className='btn  btn-neutral flex flex-row btn-xs gap-1 rounded-sm'><span className='text-lg '><BiSolidAddToQueue></BiSolidAddToQueue> </span>wishlist</button>
 
                 </CardActions>
                 <CardActions disableSpacing>
