@@ -12,6 +12,7 @@ import AddBlogs from "../Components/AddBlogs/AddBlogs";
 import UpdateBlog from "../Components/UpdateBlog/UpdateBlog";
 import FeaturesBlog from "../Components/FeatureBlogs/FeaturesBlog";
 import Wishlist from "../Components/Wishlist/Wishlist";
+import PrivateRouts from "../Components/PrivateRouts/PrivateRouts";
 
 const MyRouts = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const MyRouts = createBrowserRouter([
       },
       {
         path: '/addblog',
-        element: <AddBlogs></AddBlogs>,
+        element: <PrivateRouts><AddBlogs></AddBlogs></PrivateRouts>,
 
       },
       {
@@ -41,27 +42,27 @@ const MyRouts = createBrowserRouter([
       },
       {
         path: '/wishlist',
-        element: <Wishlist></Wishlist>,
+        element: <PrivateRouts><Wishlist></Wishlist></PrivateRouts>,
 
       },
       {
         path: '/updateblog/:id',
-        element: <UpdateBlog></UpdateBlog>,
+        element: <PrivateRouts><UpdateBlog></UpdateBlog></PrivateRouts>,
 
       },
       {
         path: '/details/:id',
         element: <BlogDetails></BlogDetails>
+      },
+      {
+        path: '/login',
+        element: <Login></Login>
+      },
+      {
+        path: '/register',
+        element: <Register></Register>
       }
     ]
-  },
-  {
-    path: '/login',
-    element: <Login></Login>
-  },
-  {
-    path: '/register',
-    element: <Register></Register>
   }
 ]);
 

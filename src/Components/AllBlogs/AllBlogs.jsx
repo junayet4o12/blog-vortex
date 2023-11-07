@@ -1,11 +1,11 @@
 // import React from 'react';
-
+import { motion } from "framer-motion"
 import { useQuery } from "@tanstack/react-query";
 import AllBlogsCard from "./AllBlogsCard";
 import { useEffect, useState } from "react";
-import { CardHeader } from "@mui/material";
+
 import nodatafound from '../../assets/notfounddata.png'
-import Skeleton from 'react-loading-skeleton';
+
 import 'react-loading-skeleton/dist/skeleton.css'
 import BlogsLoading from "./BlogsLoading";
 const AllBlogs = () => {
@@ -48,15 +48,21 @@ const AllBlogs = () => {
         </div>
     }
     return (
-        <div className="">
+        <div className="overflow-hidden">
 
-            <div className="px-10 pt-4">
+            <motion.div
+                initial={{ x: 100, opacity: 0, scale: 0.5 }}
+                whileInView={{ x: 0, opacity: 1, scale: 1 }}
+                transition={{ duration: 1 }}
+                className="px-10 pt-4">
                 <h2 className="text-3xl font-medium pt-5 pb-2 text-gray-600 uppercase">Unleash <br /> Your  <span className="text-4xl font-semibold text-black">Curiosity</span></h2>
                 <p className="text-base font-medium pb-7 max-w-2xl">Explore a World of Knowledge, Inspiration, and Creativity through Our Diverse Collection of Engaging Blog Posts. Your Source for Thought-Provoking Ideas and Valuable Insights.</p>
 
-            </div>
+            </motion.div>
             {/* searchbar */}
-            <div className="  flex flex-col-reverse md:flex-row gap-5 justify-center items-center p-4">
+            <motion.div initial={{  scale:0.4 }}
+                        whileInView={{  scale:1 }}
+                        transition={{ duration: 1 }} className="  flex flex-col-reverse md:flex-row gap-5 justify-center items-center p-4">
                 <div className="sm:w-[30%] ">
                     <div className="relative h-11  w-[200px] ">
                         <select value={category} onChange={handleCategory}
@@ -93,18 +99,20 @@ const AllBlogs = () => {
                     <button onClick={handlesearch} className="btn btn-neutral text-sm font-bold bg-black ">Search</button>
                 </div>
 
-            </div>
+            </motion.div>
             <div>
 
 
 
 
             </div>
-            <div className="flex flex-wrap justify-center gap-10 gap-y-16">
+            <motion.div initial={{  scale:0.8 }}
+                        whileInView={{ scale:1 }}
+                        transition={{ duration: 1 }} className="flex flex-wrap justify-center gap-10 gap-y-16">
                 {
-                    blogs?.map(blog => <AllBlogsCard key={blog._id} blog={blog}></AllBlogsCard>)
+                    blogs?.map((blog, idx) => <AllBlogsCard key={blog._id} blog={blog} idx={idx}></AllBlogsCard>)
                 }
-            </div>
+            </motion.div>
             {
                 blogs?.length < 1 ? <div className=" flex justify-center items-center">
                     <img className="w-[280px] sm:w-[400px] md:w-[600px] object-cover" src={nodatafound} alt="" />

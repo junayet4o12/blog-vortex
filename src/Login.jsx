@@ -1,4 +1,5 @@
 // import React from 'react';
+import { motion } from "framer-motion"
 import { HiOutlineMail } from 'react-icons/hi';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { GiArchiveRegister } from 'react-icons/gi';
@@ -71,13 +72,18 @@ const Login = () => {
             })
     }
     return (
-        <div className="py-7 px-7 flex ">
-            <div className='w-[50%]  justify-center hidden lg:block items-center'>
+        <div className="py-7 px-7 flex overflow-hidden">
+            <motion.div
+                initial={{ y: -100,  }}
+                whileInView={{ y: 0 }}
+                transition={{ duration: 0.5 }} className='w-[50%]  justify-center hidden lg:block items-center'>
                 <div className='h-full flex justify-center items-center'>
                 <img  className='w-[500px] h-[400px]  object-cover' src={loginimg} alt="" />
                 </div>
-            </div>
-            <form onSubmit={handlesubmit} className="max-w-[550px] bg-blue-500 mx-auto ">
+            </motion.div>
+            <motion.form initial={{ y: 100,  }}
+                whileInView={{ y: 0 }}
+                transition={{ duration: 0.5 }} onSubmit={handlesubmit} className="max-w-[550px] bg-blue-500 mx-auto ">
                 <div className=" bg-gradient-to-b from-gray-900  to-gray-300 py-10">
                     <h1 className='text-white font-medium text-3xl text-center uppercase'>hello and welcome</h1>
 
@@ -108,7 +114,7 @@ const Login = () => {
                     </div>
 
                 </div>
-            </form>
+            </motion.form>
         </div>
     );
 };

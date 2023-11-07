@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // import React from 'react';
-
+import { motion } from "framer-motion"
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -21,7 +21,7 @@ import axios from 'axios';
 
 
 
-const BlogCard = ({ blog }) => {
+const BlogCard = ({ blog, idx }) => {
     const { user } = useContext(AuthContext)
     const { posterImg, img, _id, title, short_description, long_description, category, posterName, email, post_date } = blog;
     const monthNames = [
@@ -59,8 +59,11 @@ const BlogCard = ({ blog }) => {
             })
     }
     return (
-        <div>
-            <Card sx={{ maxWidth: 345 }}>
+        <motion.div initial={{ x: ((idx + 1) % 2 ? 100 : -100), }}
+            whileInView={{ x: 0, }}
+            transition={{ duration: 1 }}>
+            <Card
+                sx={{ maxWidth: 345 }}>
                 <CardHeader
                     avatar={
                         <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -101,7 +104,7 @@ const BlogCard = ({ blog }) => {
                 </CardActions>
 
             </Card>
-        </div>
+        </motion.div>
     );
 };
 

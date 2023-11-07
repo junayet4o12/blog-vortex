@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 // import React from 'react';
+import { motion } from "framer-motion"
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -26,7 +27,7 @@ import { AuthContext } from '../../Authantication/AuthProviders';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 const ExpandMore = styled((props) => {
-    const {  ...other } = props;
+    const { ...other } = props;
     return <IconButton {...other} />;
 })(({ theme, expand }) => ({
     transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
@@ -35,8 +36,8 @@ const ExpandMore = styled((props) => {
         duration: theme.transitions.duration.shortest,
     }),
 }));
-const AllBlogsCard = ({ blog }) => {
-    const {user} = useContext(AuthContext);
+const AllBlogsCard = ({ blog, idx }) => {
+    const { user } = useContext(AuthContext);
     const [jumpbtn, setjumpbtn] = useState(true);
     const { posterImg, img, _id, title, short_description, long_description, category, posterName, email, post_date } = blog;
     const monthNames = [
@@ -60,18 +61,18 @@ const AllBlogsCard = ({ blog }) => {
 
         const newblog = {
             posterImg,
-             img,
-             title,
-             blogid: _id,
-             short_description,
-             long_description,
-             category,
-             posterName,
-             email,
-             post_date, 
-             listerUser : user?.email
+            img,
+            title,
+            blogid: _id,
+            short_description,
+            long_description,
+            category,
+            posterName,
+            email,
+            post_date,
+            listerUser: user?.email
         }
-        
+
         axios.post('http://localhost:3000/api/v1/wishlistBlog', newblog)
             .then(res => {
                 console.log(res.data);
@@ -79,12 +80,14 @@ const AllBlogsCard = ({ blog }) => {
             })
     }
     return (
-        <div className='fullcardhover'>
+        <motion.div initial={{ x: ((idx + 1) % 2 ? 100 : -100) }}
+            whileInView={{ x: 0 }}
+            transition={{ duration: 0.7 }} className='fullcardhover'>
             <Card sx={{ maxWidth: 345 }}>
                 <CardHeader
                     avatar={
                         <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                            <img src={posterImg} alt="" />
+                            <img  src={posterImg} alt="" />
                         </Avatar>
                     }
 
@@ -96,7 +99,7 @@ const AllBlogsCard = ({ blog }) => {
                     {category}
                 </Typography>
 
-                <CardMedia
+                <CardMedia 
                     component="img"
                     className='h-[250px] '
                     image={img}
@@ -115,7 +118,7 @@ const AllBlogsCard = ({ blog }) => {
                 </div>
 
                 <CardActions className='flex justify-start items-center gap-2'>
-                <Link to={`/details/${_id}`}>
+                    <Link to={`/details/${_id}`}>
                         <button className='btn btn-xs btn-neutral flex gap-1 rounded-sm'><span className='text-lg'><CgDetailsMore></CgDetailsMore></span>Details</button>
                     </Link>
                     <button onClick={handlewishlist} className='btn  btn-neutral flex flex-row btn-xs gap-1 rounded-sm'><span className='text-lg '><BiSolidAddToQueue></BiSolidAddToQueue> </span>wishlist</button>
@@ -148,7 +151,7 @@ const AllBlogsCard = ({ blog }) => {
                     </CardContent>
                 </Collapse>
             </Card>
-        </div>
+        </motion.div>
     );
 };
 
