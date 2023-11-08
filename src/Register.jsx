@@ -11,9 +11,9 @@ import Swal from "sweetalert2";
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { updateProfile } from 'firebase/auth';
 import { AuthContext } from './Authantication/AuthProviders';
-import auth from './Authantication/firebase.config';
 import registerimg from './assets/register.svg'
 import toast from "react-hot-toast";
+import auth from "./Authantication/firebase.config";
 
 const Register = () => {
     const [doneerror, setdoneerror] = useState('')
@@ -83,7 +83,7 @@ const Register = () => {
                 })
 
 
-                navigate(location?.state ? location?.state : '/')
+                navigate('/')
             })
             .catch(error => {
                 console.log(error);

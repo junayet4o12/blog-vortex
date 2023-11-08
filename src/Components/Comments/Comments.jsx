@@ -28,9 +28,12 @@ const Comments = ({ data, sethituseeffect, hituseeffect }) => {
             .then(res => {
 
                 console.log(res.data);
-                toast.success('Successfully Commented!!')
-                e.target.comment.value = ''
-                sethituseeffect(hituseeffect + 1)
+                if (res?.data?.acknowledged) {
+                    toast.success('Successfully Commented!!')
+                    e.target.comment.value = ''
+                    sethituseeffect(hituseeffect + 1)
+                }
+
 
             })
     }

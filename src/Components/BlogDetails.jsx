@@ -16,7 +16,10 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Authantication/AuthProviders";
 import notfounddata from '../assets/notfounddata.png';
 import cannot from '../assets/cannot.svg'
+import UseAxiosSecure from './Secure/UseAxiosSecure';
 const BlogDetails = () => {
+    const [data, setdata] = useState([]);
+    const [isLoading, setisLoading] = useState(false);
     const [commentsdata, setcommentdata] = useState([]);
     const [hituseeffect, sethituseeffect] = useState(0);
     const [seemore, setseemore] = useState(true);
@@ -25,6 +28,7 @@ const BlogDetails = () => {
     const [toggle, settoggle] = useState(true)
     const { user } = useContext(AuthContext)
     const { id } = useParams()
+    const securedata = UseAxiosSecure()
     const handleseemore = () => {
         setseemore(!seemore);
     }
@@ -43,13 +47,19 @@ const BlogDetails = () => {
             })
     }, [id, hituseeffect])
     // console.log(id);
-    const { data, isLoading } = useQuery({
-        queryKey: ['singleblog'],
-        queryFn: () => fetch(`https://blog-site-backend-rouge.vercel.app/api/v1/singleblog/${id}`)
-            .then(res => res.json())
+    // const { data, isLoading } = useQuery({
+    //     queryKey: ['singleblog'],
+    //     queryFn: async () => fetch(`https://blog-site-backend-rouge.vercel.app/api/v1/singleblog/${id}`, {credentials: 'include'})
+    //         .then(res => res.json())
 
 
-    })
+    // })
+    useEffect(() => {
+        setisLoading(true)
+        securedata.get(`/api/v1/singleblog/${id}`, {email: user?.eamil})
+            .then(res => setdata(res?.data))
+        setisLoading(false)
+    }, [id, securedata,user?.eamil])
     // console.log(data?._id);
     if (isLoading) {
         return <div>
@@ -132,7 +142,7 @@ const BlogDetails = () => {
 
                             <div className="avatar">
                                 <div className="w-10 h-10 rounded-full">
-                                    <img src={commentt?.commentedUserImg ? commentt?.commentedUserImg: emptyphoto} />
+                                    <img src={commentt?.commentedUserImg ? commentt?.commentedUserImg : emptyphoto} />
                                 </div>
                             </div>
                             <div>

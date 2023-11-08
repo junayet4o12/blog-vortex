@@ -44,7 +44,7 @@ const Login = () => {
 
                 e.target.reset();
 
-                navigate(location?.state ? location?.state : '/')
+                navigate('/')
             })
             .catch(error => {
                 console.log(error);
@@ -66,7 +66,7 @@ const Login = () => {
                 })
 
 
-                navigate(location?.state ? location?.state : '/')
+                navigate( '/')
             })
             .catch(error => {
                 console.log(error);

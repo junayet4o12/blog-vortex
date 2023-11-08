@@ -27,12 +27,12 @@ const UpdateBlog = () => {
     //         .then(res => res.json())
     // })
 
-    useEffect(()=> {
-        axios.get(`https://blog-site-backend-rouge.vercel.app/api/v1/singleblog/${id}`)
-        .then(res=>{
-            setdata(res?.data)
-        })
-    },[id])
+    useEffect(() => {
+        secureData.get(`/api/v1/singleblog/${id}`)
+            .then(res => {
+                setdata(res?.data)
+            })
+    }, [id, secureData])
 
     console.log(data);
     // if (isLoading) {
@@ -73,11 +73,14 @@ const UpdateBlog = () => {
         secureData.put(`/api/v1/singleblog/${id}`, blog)
             .then(res => {
                 console.log(res.data);
-                toast.success('Blog Updated Successfully')
+                // if(res?.data?.deletedCount>0)
+                if (res?.data?.modifiedCount > 0) {
+                    toast.success('Blog Updated Successfully')
 
-                form.shortDescription.value = '';
-                form.longDescription.value = '';
-                refetch()
+                    form.shortDescription.value = '';
+                    form.longDescription.value = '';
+                }
+
             })
     }
 

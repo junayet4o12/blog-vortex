@@ -57,7 +57,9 @@ const BlogCard = ({ blog, idx }) => {
         secureData.post('/api/v1/wishlistBlog', newblog)
             .then(res => {
                 console.log(res?.data);
+               if(res?.data?.acknowledged){
                 toast.success('Add to Wishlist successfully!!!')
+               }
             })
     }
     return (
@@ -65,7 +67,7 @@ const BlogCard = ({ blog, idx }) => {
             whileInView={{ x: 0, }}
             transition={{ duration: 1 }}>
             <Card
-                sx={{ maxWidth: 345 }}>
+                sx={{ width: 300 }}>
                 <CardHeader
                     avatar={
                         <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

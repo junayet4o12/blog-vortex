@@ -78,14 +78,16 @@ const AllBlogsCard = ({ blog, idx }) => {
         secureData.post('/api/v1/wishlistBlog', newblog)
             .then(res => {
                 console.log(res.data);
-                toast.success('Add to Wishlist successfully!!!')
+               if(res?.data?.acknowledged){
+                toast.success('Blog has Added Successfully!!')
+               }
             })
     }
     return (
         <motion.div initial={{ x: ((idx + 1) % 2 ? 100 : -100) }}
             whileInView={{ x: 0 }}
             transition={{ duration: 0.7 }} className='fullcardhover'>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={{ width: 300 }}>
                 <CardHeader
                     avatar={
                         <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

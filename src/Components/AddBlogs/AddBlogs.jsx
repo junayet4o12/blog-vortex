@@ -5,12 +5,17 @@ import formbg from '../../assets/formbg.jpg'
 import { AuthContext } from '../../Authantication/AuthProviders';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import UseAxiosSecure from '../Secure/UseAxiosSecure';
 const AddBlogs = () => {
     const [blogcategory, setblogcategory] = useState('')
     const { user } = useContext(AuthContext);
     const handleCategory = (e) => {
         setblogcategory(e.target.value)
     }
+    const secureDate = UseAxiosSecure()
+
+    secureDate.get('/api/v1/checkingclients', { email: user?.email })
+        .then(res => console.log(res.data))
     const handlesubmit = e => {
         e.preventDefault()
         const form = e.target;
@@ -37,17 +42,20 @@ const AddBlogs = () => {
             post_date
         }
         console.log(blog);
-        axios.post('https://blog-site-backend-rouge.vercel.app/api/v1/allblogs', blog, {withCredentials: true})
+        secureDate.post('/api/v1/allblogs', blog)
             .then(res => {
                 console.log(res.data);
-                toast.success('Blog Added Successfully')
-                form.title.value= '';
-                form.shortDescription.value= '';
-                form.longDescription.value= '';
+                if (res?.data?.acknowledged) {
+                    toast.success('Blog Added Successfully')
+                    form.title.value = '';
+                    form.shortDescription.value = '';
+                    form.longDescription.value = '';
 
-                
-                form.imgUrl.value= '';
-                setblogcategory('')
+
+                    form.imgUrl.value = '';
+                    setblogcategory('')
+                }
+
 
             })
     }

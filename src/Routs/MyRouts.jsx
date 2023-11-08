@@ -52,7 +52,7 @@ const MyRouts = createBrowserRouter([
       },
       {
         path: '/details/:id',
-        element: <BlogDetails></BlogDetails>
+        element: <PrivateRouts><BlogDetails></BlogDetails></PrivateRouts>
       },
       {
         path: '/login',

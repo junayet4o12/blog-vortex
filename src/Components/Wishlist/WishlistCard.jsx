@@ -10,17 +10,17 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 
 
-import {  RiDeleteBin6Fill } from 'react-icons/ri';
+import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { CgDetailsMore } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
 // import { AuthContext } from '../../../Authantication/AuthProviders';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import UseAxiosSecure from '../Secure/UseAxiosSecure';
-const WishlistCard = ({datum, setrefetch, refetch}) => {
+const WishlistCard = ({ datum, setrefetch, refetch }) => {
     // console.log(setrefetch, refetch);
     const secureData = UseAxiosSecure()
-    const { posterImg, img, _id, title, short_description,  category, posterName,  post_date,blogid } =datum;
+    const { posterImg, img, _id, title, short_description, category, posterName, post_date, blogid } = datum;
     // console.log(_id);
     const monthNames = [
         'January', 'February', 'March', 'April',
@@ -32,17 +32,20 @@ const WishlistCard = ({datum, setrefetch, refetch}) => {
     const month = monthNames[date.getMonth()];
     const day = date.getDate();
     const handleDelete = () => {
-      secureData.delete(`/api/v1/wishlistBlog/${_id}`) 
-      .then(res=>{
-        console.log(res.data);
-        toast.success('Deleted Successfullly!!')
-        setrefetch(refetch+1)
-      })  
+        secureData.delete(`/api/v1/wishlistBlog/${_id}`)
+            .then(res => {
+                console.log(res.data);
+                if (res?.data?.deletedCount > 0) {
+                    toast.success('Deleted Successfullly!!')
+                    setrefetch(refetch + 1)
+                }
+
+            })
     }
-   
+
     return (
         <div>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={{ width: 300 }}>
                 <CardHeader
                     avatar={
                         <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
