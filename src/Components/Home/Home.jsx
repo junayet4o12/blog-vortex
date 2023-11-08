@@ -23,13 +23,15 @@ const Home = () => {
     })
     return (
         <div>
-           
+
 
             <div className="relative " ref={ref}>
-                <div className="sticky top-16 z-40 px-2">
-                   
-                    <motion.div style={{ scaleX }} className=" h-2 bg-gray-500 shadow-xl rounded-md"></motion.div>
+                <div className="sticky top-[62px] lg:top-[66px] z-40 px-2">
+
+
+                    <motion.div style={{ scaleX }} className=" h-2 bg-purple-300 rounded-md shadow-inner shadow-gray-600 border border-gray-300"></motion.div>
                 </div>
+
                 <div >
                     <Banner></Banner>
                     <Categories></Categories>
