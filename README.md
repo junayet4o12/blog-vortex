@@ -2,8 +2,8 @@
 ## LIVE LINK: https://blog-16a2c.web.app/
 
 ## My projects Features.
-__Project Overview:__
-**BlogSide is a user-friendly web application built using React and Vite for the frontend, MongoDB for the backend, and Firebase for user authentication.**
+### Project Overview: ###
+BlogSide is a user-friendly web application built using React and Vite for the frontend, MongoDB for the backend, and Firebase for user authentication.
 
 __Noteworthy Features:__
 
