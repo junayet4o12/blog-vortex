@@ -3,11 +3,11 @@
 
 ## My projects Features.
 ### Project Overview: ###
-BlogSide is a user-friendly web application built using React and Vite for the frontend, MongoDB for the backend, and Firebase for user authentication.
+__Blog Vortex is a user-friendly web side built using React and Vite for the frontend, MongoDB for the backend, and Firebase for user authentication.__
 
 ### Noteworthy Features: ### 
 
-+ __Blogs are listed by description length.__
++ __Features Blogs are listed by description length.__
 + __Easy access to the latest blog posts.__
 + __The homepage introduces the platform's features.__
 + __Visitors can view all blogs without logging in.__
