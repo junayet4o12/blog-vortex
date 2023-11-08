@@ -8,6 +8,7 @@ import nodatafound from '../../assets/notfounddata.png'
 
 import 'react-loading-skeleton/dist/skeleton.css'
 import BlogsLoading from "./BlogsLoading";
+import axios from "axios";
 const AllBlogs = () => {
     const [blogs, setblogs] = useState([])
     const [searchingtext, setsearchingtext] = useState('')
@@ -39,8 +40,12 @@ const AllBlogs = () => {
     const handleCategory = (e) => {
         setcategory(e.target.value)
         setsearchingtext('')
-        const newdata = data.filter(datum => datum.category.toLowerCase().includes((e.target.value).toLowerCase()))
-        setblogs(newdata)
+        axios.get(`https://blog-site-backend-rouge.vercel.app/api/v1/searchbycat?category=${e.target.value}`)
+        .then(res=> {
+            setblogs(res.data);
+        })
+        // const newdata = data.filter(datum => datum.category.toLowerCase().includes((e.target.value).toLowerCase()))
+        // setblogs(newdata)
     }
     if (isLoading) {
         return <div className="mt-10 h-[70vh] overflow-hidden">
