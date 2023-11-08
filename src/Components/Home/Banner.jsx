@@ -59,11 +59,11 @@ const Banner = () => {
                         initial={{ x: -100, opacity: 0, scale: 0.5 }}
                         whileInView={{ x: 0, opacity: 1, scale: 1 }}
                         transition={{ duration: 1 }}
-                        className='lg:[40%] px-5 flex flex-col justify-center absolute lg:static z-10 h-full w-full bg-[#00000091] lg:bg-transparent text-white lg:text-black'>
-                        <h1 className="text-3xl sm:text-6xl  font-bold text-gray-400 lg:text-gray-700"><span className='font-medium'>News <br /> &</span> Magazine</h1>
-                        <h3 className='text-2xl font-semibold py-4'>Blog Vortex</h3>
-                        <p className="pb-4 font-semibold text-sm max-w-md">Your Gateway to an Infinite World of Knowledge and Inspiration. Dive into thought-provoking articles and explore a whirlwind of ideas.</p>
-                        <button className="btn btn-neutral w-max">Know More</button>
+                        className='lg:[40%] px-2 sm:px-5 flex flex-col justify-center absolute lg:static z-10 h-full w-full bg-[#00000091] lg:bg-transparent text-white lg:text-black'>
+                        <h1 className="text-xl sm:text-6xl  font-bold text-gray-400 lg:text-gray-700"><span className='font-medium'>News <br /> &</span> Magazine</h1>
+                        <h3 className='text-lg sm:text-4xl font-semibold py-2 sm:py-4'>Blog Vortex</h3>
+                        <p className= "pb-2 sm:pb-4 font-semibold text-sm max-w-md">Your Gateway to an Infinite World of Knowledge and Inspiration. Dive into thought-provoking articles and explore a whirlwind of ideas.</p>
+                       
 
                     </motion.div>
                 </div>
