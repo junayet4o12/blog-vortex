@@ -17,6 +17,7 @@ import { AuthContext } from "../Authantication/AuthProviders";
 import notfounddata from '../assets/notfounddata.png';
 import cannot from '../assets/cannot.svg'
 import UseAxiosSecure from './Secure/UseAxiosSecure';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 const BlogDetails = () => {
     const [data, setdata] = useState([]);
     const [isLoading, setisLoading] = useState(false);
@@ -56,10 +57,10 @@ const BlogDetails = () => {
     // })
     useEffect(() => {
         setisLoading(true)
-        securedata.get(`/api/v1/singleblog/${id}`, {email: user?.eamil})
+        securedata.get(`/api/v1/singleblog/${id}`, { email: user?.eamil })
             .then(res => setdata(res?.data))
         setisLoading(false)
-    }, [id, securedata,user?.eamil])
+    }, [id, securedata, user?.eamil])
     // console.log(data?._id);
     if (isLoading) {
         return <div>
@@ -87,11 +88,16 @@ const BlogDetails = () => {
                         floated={false}
                         className="m-0  shrink-0 rounded-r-none  max-w-[400px] w-full  sm:w-[420px] bg-gray-200"
                     >
-                        <img
-                            src={img}
-                            alt="card-image"
-                            className="h-full sm:h-[300px] md:h-[400px]  w-full object-cover rounded-t-md md:rounded-none md:rounded-l-md"
-                        />
+
+                        <PhotoProvider>
+                            <PhotoView src={img}>
+                                <img
+                                    src={img}
+                                    alt="card-image"
+                                    className="h-full sm:h-[300px] md:h-[400px]  w-full object-cover rounded-t-md md:rounded-none md:rounded-l-md cursor-pointer"
+                                />
+                            </PhotoView>
+                        </PhotoProvider>
                     </CardHeader>
                     <CardBody className="p-4 w-full max-w-[400px] sm:max-w-full sm:w-[400px] md:w-max">
                         <div className="flex items-center gap-3 pb-5">

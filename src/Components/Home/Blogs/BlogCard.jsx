@@ -19,6 +19,7 @@ import { AuthContext } from '../../../Authantication/AuthProviders';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import UseAxiosSecure from "../../Secure/UseAxiosSecure";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 
 
@@ -57,9 +58,9 @@ const BlogCard = ({ blog, idx }) => {
         secureData.post('/api/v1/wishlistBlog', newblog)
             .then(res => {
                 console.log(res?.data);
-               if(res?.data?.acknowledged){
-                toast.success('Add to Wishlist successfully!!!')
-               }
+                if (res?.data?.acknowledged) {
+                    toast.success('Add to Wishlist successfully!!!')
+                }
             })
     }
     return (
@@ -82,13 +83,18 @@ const BlogCard = ({ blog, idx }) => {
                 <Typography variant="body2" color="text.secondary" fontWeight="bold" fontSize="18px" padding="5px">
                     {category}
                 </Typography>
+                <PhotoProvider>
+                    <PhotoView src={img}>
+                        <CardMedia
+                            component="img"
+                            className='h-[250px] '
+                            image={img}
 
-                <CardMedia
-                    component="img"
-                    className='h-[250px] '
-                    image={img}
-                    alt="Paella dish"
-                />
+                            alt="Paella dish"
+                        />
+                    </PhotoView>
+                </PhotoProvider>
+
 
                 <Typography variant="body2" color="text.secondary" fontWeight="bold" fontSize="18px" padding={`10px 15px`}>
                     {title}

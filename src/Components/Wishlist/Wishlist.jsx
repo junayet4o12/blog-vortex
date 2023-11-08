@@ -46,9 +46,9 @@ const Wishlist = () => {
 
     return (
         <div className='py-20'>
-            <div className="flex flex-wrap justify-center  gap-5 ">
+            <div className="flex flex-wrap justify-center  gap-10 ">
                 {
-                    data?.map(datum => <WishlistCard key={datum?._id} datum={datum} setrefetch={setrefetch} refetch={refetch} ></WishlistCard>)
+                    data?.map((datum , idx)=> <WishlistCard key={datum?._id} idx={idx} datum={datum} setrefetch={setrefetch} refetch={refetch} ></WishlistCard>)
                 }
             </div>
             <div>

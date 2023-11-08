@@ -27,6 +27,7 @@ import { AuthContext } from '../../Authantication/AuthProviders';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import UseAxiosSecure from "../Secure/UseAxiosSecure";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 const ExpandMore = styled((props) => {
     const { ...other } = props;
     return <IconButton {...other} />;
@@ -103,12 +104,17 @@ const AllBlogsCard = ({ blog, idx }) => {
                     {category}
                 </Typography>
 
-                <CardMedia 
-                    component="img"
-                    className='h-[250px] '
-                    image={img}
-                    alt="Paella dish"
-                />
+                <PhotoProvider>
+                    <PhotoView src={img}>
+                        <CardMedia
+                            component="img"
+                            className='h-[250px] cursor-pointer'
+                            image={img}
+
+                            alt="Paella dish"
+                        />
+                    </PhotoView>
+                </PhotoProvider>
 
                 <div className='pr-2'>
                     <Typography variant="body2" color="text.secondary" fontWeight="bold" fontSize="18px" padding={`10px 15px`}>

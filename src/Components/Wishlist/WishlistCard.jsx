@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 // import React from 'react';
+import { motion } from "framer-motion"
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -17,7 +18,8 @@ import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import UseAxiosSecure from '../Secure/UseAxiosSecure';
-const WishlistCard = ({ datum, setrefetch, refetch }) => {
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+const WishlistCard = ({ datum, setrefetch, refetch, idx }) => {
     // console.log(setrefetch, refetch);
     const secureData = UseAxiosSecure()
     const { posterImg, img, _id, title, short_description, category, posterName, post_date, blogid } = datum;
@@ -44,7 +46,9 @@ const WishlistCard = ({ datum, setrefetch, refetch }) => {
     }
 
     return (
-        <div>
+        <motion.div initial={{ x: ((idx + 1) % 2 ? 100 : -100) }}
+        whileInView={{ x: 0 }}
+        transition={{ duration: 0.7 }} >
             <Card sx={{ width: 300 }}>
                 <CardHeader
                     avatar={
@@ -61,12 +65,17 @@ const WishlistCard = ({ datum, setrefetch, refetch }) => {
                     {category}
                 </Typography>
 
-                <CardMedia
-                    component="img"
-                    className='h-[250px] '
-                    image={img}
-                    alt="Paella dish"
-                />
+                <PhotoProvider>
+                    <PhotoView src={img}>
+                        <CardMedia
+                            component="img"
+                            className='h-[250px] cursor-pointer'
+                            image={img}
+
+                            alt="Paella dish"
+                        />
+                    </PhotoView>
+                </PhotoProvider>
 
                 <Typography variant="body2" color="text.secondary" fontWeight="bold" fontSize="18px" padding={`10px 15px`}>
                     {title}
@@ -86,7 +95,7 @@ const WishlistCard = ({ datum, setrefetch, refetch }) => {
                 </CardActions>
 
             </Card>
-        </div>
+        </motion.div>
     );
 };
 
