@@ -30,9 +30,9 @@ const Navbar2 = () => {
             <div className="navbar bg-base-100 shadow-xl">
                 <div className="navbar-start">
 
-                    <div className=" block lg:hidden ">
-                        <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-                        <div className="drawer-content">
+                    <div className=" block lg:hidden z-50">
+                        <input id="my-drawer" type="checkbox" className="drawer-toggle z-50" />
+                        <div className="drawer-content z-50">
                             {/* Page content here */}
                             <label htmlFor="my-drawer" className="btn text-xl bg-transparent border-none hover:bg-transparent"> <AiOutlineMenuUnfold></AiOutlineMenuUnfold></label>
                         </div>

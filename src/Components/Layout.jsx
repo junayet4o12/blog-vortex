@@ -8,7 +8,7 @@ const Layout = () => {
     return (
         <div>
             <Navbar1></Navbar1>
-            <div className="sticky top-0 z-40">
+            <div className="sticky top-0 z-50">
                 <Navbar2></Navbar2>
             </div>
             <Outlet></Outlet>
