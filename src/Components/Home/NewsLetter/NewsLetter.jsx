@@ -15,8 +15,10 @@ const NewsLetter = () => {
         axios.post('https://blog-site-backend-rouge.vercel.app/api/v1/subscribers', user)
             .then(res => {
                 console.log(res.data);
-                toast.success('Thank you for subsribing !!')
-                e.target.reset()
+                if(res?.data?.acknowledged){
+                    toast.success('Thank you for subscribing !!')
+                    e.target.reset()
+                }
 
             })
     }
