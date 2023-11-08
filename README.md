@@ -18,7 +18,7 @@ __Blog Vortex is a user-friendly web side built using React and Vite for the fro
 ### 4. Blog Interactions:
 __Users can explore and comment on other users' blogs, maintaining quality discussions by not commenting on their own.__
 
-### 5. Additional Enhancements:
+### 5. Additional Features:
 __Efficient data management with React Data Table, smooth animations with Framer Motion, and an appealing loading experience with React Skeleton. Notifications are managed through React Hot Toast and SweetAlert2.__
 
 __BlogSide is designed for bloggers and readers to share, discover, and discuss, offering an enjoyable experience for all.__
