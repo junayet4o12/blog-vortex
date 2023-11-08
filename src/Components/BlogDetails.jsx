@@ -144,7 +144,7 @@ const BlogDetails = () => {
                 <h2 className="text-2xl font-bold text-center p-2 ">Users Comments</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-7 ">
                     {
-                        commentsdata.slice(0, toggle ? 3 : data.length).map(commentt => <div key={commentt._id} className="flex gap-5 bg-gray-200  max-w-full  p-2 px-4 rounded-3xl">
+                        commentsdata.slice(0, toggle ? 4 : data.length).map(commentt => <div key={commentt._id} className="flex gap-5 bg-gray-200  max-w-full  p-2 px-4 rounded-3xl">
 
                             <div className="avatar">
                                 <div className="w-10 h-10 rounded-full">
@@ -164,7 +164,7 @@ const BlogDetails = () => {
                         </div>)
                     }
                 </div>
-                <div className={`text-center ${commentsdata.length > 3 ? 'block' : 'hidden'}`}>
+                <div className={`text-center ${commentsdata.length > 4 ? 'block' : 'hidden'}`}>
                     <button onClick={() => settoggle(!toggle)} className="btn bg-black btn-neutral text-sm font-bold text-white my-4">
                         {
                             toggle ? 'See More' : 'See Less'
