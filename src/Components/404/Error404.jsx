@@ -15,7 +15,7 @@ const Error404 = () => {
     
 
     return (
-        <div id="error-page" className="flex flex-col lg:flex-row justify-center items-center gap-5  bg-white">
+        <div id="error-page" className="flex flex-col lg:flex-row justify-center items-center gap-5">
 
             <div className=" items-center relative">
                 <img className="w-[270px] sm:w-[400px] md:w-[500px]" src={page404} alt="" />
