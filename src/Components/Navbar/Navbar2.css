@@ -11,3 +11,13 @@ li .active{
   font-weight: 600;
   padding: 8px 8px;
 }
+
+.text-animation {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.text-hidden {
+  opacity: 0;
+  transition: opacity 0.5s;
+}

@@ -22,7 +22,7 @@ const Banner = () => {
         <div>
             <div
 
-                className=" min-h-screen bg-base-200 pb-7 lg:pb-0">
+                className=" bg-base-200 pb-7 lg:pb-0">
                 <div className="flex flex-col lg:justify-between lg:flex-row-reverse overflow-hidden  gap-10 lg:gap-0 relative">
                     <div
 
@@ -31,7 +31,7 @@ const Banner = () => {
                             modules={[Navigation, Scrollbar, A11y, EffectCube, Autoplay]}
                             spaceBetween={50}
                             slidesPerView={1}
-                            navigation
+                            
                             effect="cube"
 
                             scrollbar={{ draggable: true }}
