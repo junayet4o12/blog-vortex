@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { AuthContext } from './Authantication/AuthProviders';
 import loginimg from './assets/login.svg'
+import toast from "react-hot-toast";
 
 const Login = () => {
     const [loggedinuser, setloggedinuser] = useState('')
@@ -47,6 +48,7 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
+                toast.error(`Something else in email or password..`)
                 setloggedinuser(<p className="text-red-500">Something else in email or password..</p>)
             })
     }
@@ -68,6 +70,7 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
+                toast.error(error.message.split('/')[1].split(')')[0].replace(/-/g, ' '))
                 setloggedinuser(<p className="text-red-500">{error.message.split('/')[1].split(')')[0].replace(/-/g, ' ')}</p>)
             })
     }

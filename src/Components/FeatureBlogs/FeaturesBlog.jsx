@@ -2,6 +2,7 @@
 
 
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 import DataTable from "react-data-table-component";
 
@@ -15,7 +16,7 @@ const FeaturesBlog = () => {
 
     const { data, isLoading } = useQuery({
         queryKey: ['featureddatagetting'],
-        queryFn: () => fetch('http://localhost:3000/api/v1/featuresblogs')
+        queryFn: () => fetch('https://blog-site-backend-rouge.vercel.app/api/v1/featuresblogs')
             .then(res => res.json())
     })
 

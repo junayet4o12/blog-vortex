@@ -14,7 +14,7 @@ const AllBlogs = () => {
     const [category, setcategory] = useState('')
     const { data, isLoading } = useQuery({
         queryKey: ['getallblogs'],
-        queryFn: () => fetch('http://localhost:3000/api/v1/allblogs')
+        queryFn: async () => fetch('https://blog-site-backend-rouge.vercel.app/api/v1/allblogs')
             .then(res => res.json())
 
     })
@@ -106,7 +106,7 @@ const AllBlogs = () => {
 
 
             </div>
-            <motion.div initial={{  scale:0.8 }}
+            <motion.div initial={{  scale:0.9 }}
                         whileInView={{ scale:1 }}
                         transition={{ duration: 1 }} className="flex flex-wrap justify-center gap-10 gap-y-16">
                 {

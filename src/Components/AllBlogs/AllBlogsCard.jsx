@@ -26,6 +26,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Authantication/AuthProviders';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import UseAxiosSecure from "../Secure/UseAxiosSecure";
 const ExpandMore = styled((props) => {
     const { ...other } = props;
     return <IconButton {...other} />;
@@ -39,6 +40,7 @@ const ExpandMore = styled((props) => {
 const AllBlogsCard = ({ blog, idx }) => {
     const { user } = useContext(AuthContext);
     const [jumpbtn, setjumpbtn] = useState(true);
+    const secureData = UseAxiosSecure()
     const { posterImg, img, _id, title, short_description, long_description, category, posterName, email, post_date } = blog;
     const monthNames = [
         'January', 'February', 'March', 'April',
@@ -73,7 +75,7 @@ const AllBlogsCard = ({ blog, idx }) => {
             listerUser: user?.email
         }
 
-        axios.post('http://localhost:3000/api/v1/wishlistBlog', newblog)
+        secureData.post('/api/v1/wishlistBlog', newblog)
             .then(res => {
                 console.log(res.data);
                 toast.success('Add to Wishlist successfully!!!')
@@ -112,7 +114,7 @@ const AllBlogsCard = ({ blog, idx }) => {
                     </Typography>
 
 
-                    <Typography className='whitespace-nowrap overflow-hidden ' paddingX={` 15px`} variant="body2" color="text.secondary">
+                    <Typography className='h-[70px] overflow-hidden ' paddingX={` 15px`} variant="body2" color="text.secondary">
                         {short_description}
                     </Typography>
                 </div>

@@ -5,9 +5,9 @@ import { useContext } from "react";
 import { AuthContext } from "../../Authantication/AuthProviders";
 import axios from "axios";
 import toast from "react-hot-toast";
-
+import UseAxiosSecure from "../Secure/UseAxiosSecure";
 const Comments = ({ data, sethituseeffect, hituseeffect }) => {
-    
+    const secureData = UseAxiosSecure()
     const { user } = useContext(AuthContext)
     const { _id, category } = data;
     const handlesubmit = (e) => {
@@ -23,11 +23,12 @@ const Comments = ({ data, sethituseeffect, hituseeffect }) => {
             category: category,
             commentTime: Date.parse(new Date())
         }
-        console.log(commentDetails);
-        axios.post('http://localhost:3000/api/v1/comments', commentDetails)
+        // console.log(commentDetails);
+        secureData.post('/api/v1/comments', commentDetails)
             .then(res => {
-                toast.success('Successfully Commented!!')
+
                 console.log(res.data);
+                toast.success('Successfully Commented!!')
                 e.target.comment.value = ''
                 sethituseeffect(hituseeffect + 1)
 
@@ -40,7 +41,7 @@ const Comments = ({ data, sethituseeffect, hituseeffect }) => {
 
                 <form onSubmit={handlesubmit}>
                     <div className="flex justify-center items-center">
-                        <textarea disabled={!user?.email} name="comment" className="textarea textarea-bordered w-[300px] sm:w-[500px] h-[150px] font-medium" placeholder={`${user?.email? 'Write your comment': 'Please, Log in first.......'}`} required></textarea>
+                        <textarea disabled={!user?.email} name="comment" className="textarea textarea-bordered w-[300px] sm:w-[500px] h-[150px] font-medium" placeholder={`${user?.email ? 'Write your comment' : 'Please, Log in first.......'}`} required></textarea>
                     </div>
                     <div className="text-center py-3">
                         <button disabled={!user?.email} className="btn btn-neutral bg-black font-bold text-sm">Send Comment</button>

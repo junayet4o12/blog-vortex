@@ -12,7 +12,7 @@ const NewsLetter = () => {
         const email = e.target.email.value
         console.log(email);
         const user = { subscriber: email }
-        axios.post('http://localhost:3000/api/v1/subscribers', user)
+        axios.post('https://blog-site-backend-rouge.vercel.app/api/v1/subscribers', user)
             .then(res => {
                 console.log(res.data);
                 toast.success('Thank you for subsribing !!')

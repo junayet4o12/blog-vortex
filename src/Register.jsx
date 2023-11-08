@@ -13,6 +13,7 @@ import { updateProfile } from 'firebase/auth';
 import { AuthContext } from './Authantication/AuthProviders';
 import auth from './Authantication/firebase.config';
 import registerimg from './assets/register.svg'
+import toast from "react-hot-toast";
 
 const Register = () => {
     const [doneerror, setdoneerror] = useState('')
@@ -34,7 +35,7 @@ const Register = () => {
         const email = form.get('email');
         const password = form.get('password');
         if (! /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d)[A-Za-z0-9\s!@#$%^&*(),.?":{}|<>]{6,}$/.test(password)) {
-            
+            toast.error('Use a valid password!!')
             return setdoneerror(<p className="text-red-500">Password must be at least 6 characters long, contain at least one capital letter and special charecter.</p>)
         }
 
@@ -64,6 +65,7 @@ const Register = () => {
             })
             .catch(error => {
                 console.log(error);
+                toast.error(error.message.split('/')[1].split(')')[0].replace(/-/g, ' '))
                 setdoneerror(<p className="text-red-500">{error.message.split('/')[1].split(')')[0].replace(/-/g, ' ')}</p>)
             })
     }
@@ -85,6 +87,7 @@ const Register = () => {
             })
             .catch(error => {
                 console.log(error);
+                toast.error(error.message.split('/')[1].split(')')[0].replace(/-/g, ' '))
                 setdoneerror(<p className="text-red-500">{error.message.split('/')[1].split(')')[0].replace(/-/g, ' ')}</p>)
             })
     }

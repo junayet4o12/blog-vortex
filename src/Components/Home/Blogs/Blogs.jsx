@@ -6,11 +6,10 @@ import { motion } from "framer-motion"
 const Blogs = () => {
     const { data, isLoading } = useQuery({
         queryKey: ['blogsData'],
-        queryFn: async () => fetch('http://localhost:3000/api/v1/latestblogs')
+        queryFn: async () => fetch('https://blog-site-backend-rouge.vercel.app/api/v1/latestblogs')
             .then(res => res.json())
     })
     console.log(data, isLoading);
-
     return (
         <div className="py-7 px-2 bg-gray-100 overflow-hidden">
 

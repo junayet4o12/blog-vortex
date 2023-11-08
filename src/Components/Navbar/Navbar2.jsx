@@ -12,6 +12,7 @@ import bloglogo from '../../assets/BlogLogo.png'
 import { Link, NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../Authantication/AuthProviders';
+import emptyuser from '../../assets/emptyuser.jpg'
 const Navbar2 = () => {
     const { user, logout } = useContext(AuthContext);
     const navitem = <>
@@ -57,7 +58,7 @@ const Navbar2 = () => {
                             user ? <>
                                 <div className='mr-2  flex flex-col justify-center items-center'>
                                     <div className='w-10 h-10 rounded-full bg-white overflow-hidden'>
-                                        <img className="w-full h-full" src={user.photoURL ? user.photoURL : ''} alt="" />
+                                        <img className="w-full h-full" src={user.photoURL ? user.photoURL : emptyuser} alt="" />
                                     </div>
 
                                 </div>

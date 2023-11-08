@@ -16,11 +16,12 @@ import { Link } from 'react-router-dom';
 // import { AuthContext } from '../../../Authantication/AuthProviders';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import UseAxiosSecure from '../Secure/UseAxiosSecure';
 const WishlistCard = ({datum, setrefetch, refetch}) => {
     // console.log(setrefetch, refetch);
-    
+    const secureData = UseAxiosSecure()
     const { posterImg, img, _id, title, short_description,  category, posterName,  post_date,blogid } =datum;
-    console.log(_id);
+    // console.log(_id);
     const monthNames = [
         'January', 'February', 'March', 'April',
         'May', 'June', 'July', 'August',
@@ -31,7 +32,7 @@ const WishlistCard = ({datum, setrefetch, refetch}) => {
     const month = monthNames[date.getMonth()];
     const day = date.getDate();
     const handleDelete = () => {
-      axios.delete(`http://localhost:3000/api/v1/wishlistBlog/${_id}`) 
+      secureData.delete(`/api/v1/wishlistBlog/${_id}`) 
       .then(res=>{
         console.log(res.data);
         toast.success('Deleted Successfullly!!')
@@ -69,7 +70,7 @@ const WishlistCard = ({datum, setrefetch, refetch}) => {
                 </Typography>
 
 
-                <Typography paddingX={` 15px`} variant="body2" color="text.secondary">
+                <Typography paddingX={` 15px`} variant="body2" color="text.secondary" height={70} overflow={'hidden'}>
                     {short_description}
                 </Typography>
 

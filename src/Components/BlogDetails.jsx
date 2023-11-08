@@ -1,5 +1,5 @@
 // import React from 'react';
-
+import emptyphoto from '../../src/assets/emptyuser.jpg'
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import BlogsLoading from "./AllBlogs/BlogsLoading";
@@ -35,22 +35,22 @@ const BlogDetails = () => {
         setlongdessseemore(!longdessseemore);
     }
     useEffect(() => {
-        axios.get(`http://localhost:3000/api/v1/singeblogcomments?id=${id}`)
+        axios.get(`https://blog-site-backend-rouge.vercel.app/api/v1/singleblogcomments?id=${id}`)
             .then(res => {
-                console.log(hituseeffect);
+                // console.log(hituseeffect);
                 setcommentdata(res.data);
-                console.log(res.data);
+                // console.log(res.data);
             })
     }, [id, hituseeffect])
-    console.log(id);
+    // console.log(id);
     const { data, isLoading } = useQuery({
         queryKey: ['singleblog'],
-        queryFn: () => fetch(`http://localhost:3000/api/v1/signleblog/${id}`)
+        queryFn: () => fetch(`https://blog-site-backend-rouge.vercel.app/api/v1/singleblog/${id}`)
             .then(res => res.json())
 
 
     })
-    console.log(data?._id);
+    // console.log(data?._id);
     if (isLoading) {
         return <div>
             <BlogsLoading></BlogsLoading>
@@ -58,7 +58,7 @@ const BlogDetails = () => {
     }
     const { img, title, short_description, long_description, category, email, posterImg, posterName, _id } = data;
 
-    console.log(email);
+    // console.log(email);
 
 
     return (
@@ -116,7 +116,7 @@ const BlogDetails = () => {
                         </Typography>
                         <div>
                             <div className={`${email !== user?.email ? 'hidden' : 'block'}`}>
-                                <Link to={`http://localhost:5173/updateblog/${_id}`}>
+                                <Link to={`/updateblog/${_id}`}>
                                     <button className="btn btn-neutral bg-black text-sm font-bold">Update</button>
                                 </Link>
                             </div>
@@ -132,7 +132,7 @@ const BlogDetails = () => {
 
                             <div className="avatar">
                                 <div className="w-10 h-10 rounded-full">
-                                    <img src={commentt?.commentedUserImg} />
+                                    <img src={commentt?.commentedUserImg ? commentt?.commentedUserImg: emptyphoto} />
                                 </div>
                             </div>
                             <div>

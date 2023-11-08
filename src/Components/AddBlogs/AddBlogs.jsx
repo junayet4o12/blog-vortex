@@ -37,7 +37,7 @@ const AddBlogs = () => {
             post_date
         }
         console.log(blog);
-        axios.post('http://localhost:3000/api/v1/allblogs', blog)
+        axios.post('https://blog-site-backend-rouge.vercel.app/api/v1/allblogs', blog, {withCredentials: true})
             .then(res => {
                 console.log(res.data);
                 toast.success('Blog Added Successfully')
