@@ -11,6 +11,7 @@ import DataTable from "react-data-table-component";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import emptyUser from '../../assets/emptyuser.jpg'
+import { Link } from "react-router-dom";
 
 const FeaturesBlog = () => {
 
@@ -64,6 +65,7 @@ const FeaturesBlog = () => {
     }
 
     const columns = [
+
         {
             name: <p className="font-bold">Serial No.</p>,
             selector: row => <div className={`flex  items-center gap-20 `}>
@@ -80,7 +82,16 @@ const FeaturesBlog = () => {
         {
             name: <p className="font-bold ">Blog title</p>,
             selector: row => <p className={`font-bold  `}>{row?.title}</p>
+        },
+        {
+            name: <p className="font-bold ">See Details</p>,
+            cell: row => (
+                <Link to={`/details/${row._id}`}>
+                    <button className="btn btn-neutral btn-sm bg-black">Details</button>
+                </Link>
+            )
         }
+
     ]
 
 
@@ -93,14 +104,18 @@ const FeaturesBlog = () => {
                 <p className="text-base font-medium pb-7 max-w-2xl">Explore the Blog Vortex&apos;s exclusive Featured Blogs section, showcasing the most extensive and captivating blog posts. Dive into the world of knowledge and creativity with our curated selection of the top ten large-description blogs.</p>
 
             </div>
-            <div>
-                <DataTable
-                    columns={columns}
-                    data={data}
+            <div className="p-5">
+                <div  className="shadow-xl rounded-lg">
+                    <DataTable
+                       
+                        columns={columns}
+                        data={data}
+                        selectableRowsHighlight
+                        highlightOnHover
+                    >
 
-                >
-
-                </DataTable>
+                    </DataTable>
+                </div>
             </div>
         </div>
     );
