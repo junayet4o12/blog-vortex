@@ -111,7 +111,7 @@ const AllBlogs = () => {
 
 
             </div>
-            <motion.div initial={{  scale:0.9 }}
+            <motion.div initial={{  scale:1.1 }}
                         whileInView={{ scale:1 }}
                         transition={{ duration: 1 }} className="flex flex-wrap justify-center gap-10 gap-y-16">
                 {

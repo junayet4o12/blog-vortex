@@ -18,6 +18,7 @@ import notfounddata from '../assets/notfounddata.png';
 import cannot from '../assets/cannot.svg'
 import UseAxiosSecure from './Secure/UseAxiosSecure';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
+import emptyUser from '../assets/emptyuser.jpg'
 const BlogDetails = () => {
     const [data, setdata] = useState([]);
     const [isLoading, setisLoading] = useState(false);
@@ -103,7 +104,7 @@ const BlogDetails = () => {
                         <div className="flex items-center gap-3 pb-5">
                             <div className="avatar">
                                 <div className="w-14 h-14  rounded-full">
-                                    <img src={posterImg} />
+                                    <img src={posterImg || emptyUser} />
                                 </div>
                             </div>
 

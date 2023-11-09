@@ -20,6 +20,7 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import UseAxiosSecure from "../../Secure/UseAxiosSecure";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import emptyuser from '../../../assets/emptyuser.jpg'
 
 
 
@@ -72,7 +73,7 @@ const BlogCard = ({ blog, idx }) => {
                 <CardHeader
                     avatar={
                         <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                            <img src={posterImg} alt="" />
+                            <img src={posterImg || emptyuser} alt="" />
                         </Avatar>
                     }
 
@@ -87,7 +88,7 @@ const BlogCard = ({ blog, idx }) => {
                     <PhotoView src={img}>
                         <CardMedia
                             component="img"
-                            className='h-[250px] '
+                            className='h-[250px] cursor-pointer'
                             image={img}
 
                             alt="Paella dish"

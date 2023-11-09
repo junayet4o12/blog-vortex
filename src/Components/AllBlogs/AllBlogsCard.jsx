@@ -26,6 +26,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Authantication/AuthProviders';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import emptyUser from '../../assets/emptyuser.jpg'
 import UseAxiosSecure from "../Secure/UseAxiosSecure";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 const ExpandMore = styled((props) => {
@@ -92,7 +93,7 @@ const AllBlogsCard = ({ blog, idx }) => {
                 <CardHeader
                     avatar={
                         <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                            <img  src={posterImg} alt="" />
+                            <img  src={posterImg || emptyUser} alt="" />
                         </Avatar>
                     }
 

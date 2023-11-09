@@ -28,11 +28,11 @@ const UpdateBlog = () => {
     // })
 
     useEffect(() => {
-        secureData.get(`/api/v1/singleblog/${id}`)
+        secureData.get(`/api/v1/singleblog2/${id}?email=${user?.email}`)
             .then(res => {
                 setdata(res?.data)
             })
-    }, [id, secureData])
+    }, [id, secureData,user?.email])
 
     console.log(data);
     // if (isLoading) {

@@ -10,7 +10,7 @@ import DataTable from "react-data-table-component";
 // import React from 'react';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-
+import emptyUser from '../../assets/emptyuser.jpg'
 
 const FeaturesBlog = () => {
 
@@ -66,20 +66,20 @@ const FeaturesBlog = () => {
     const columns = [
         {
             name: <p className="font-bold">Serial No.</p>,
-            selector: row => <div className="flex  items-center gap-20">
+            selector: row => <div className={`flex  items-center gap-20 `}>
                 <p className="text-lg font-bold flex justify-center items-center border-2 min-w-[48px] h-12  rounded-lg bg-gray-200">{data?.indexOf(row) + 1}</p>
-                <div className="w-16 h-16 my-2"> <img className="rounded-full w-16 h-16" src={row?.posterImg} alt="" /></div>
+                <div className="w-16 h-16 my-2"> <img className="rounded-full w-16 h-16" src={row?.posterImg || emptyUser} alt="" /></div>
             </div>,
 
         },
         {
             name: <p className="font-bold ">Blog Owner</p>,
-            selector: row => <p className="font-bold">{row.posterName}</p>,
+            selector: row => <p className={`font-bold `}>{row.posterName}</p>,
 
         },
         {
             name: <p className="font-bold ">Blog title</p>,
-            selector: row => <p className="font-bold">{row?.title}</p>
+            selector: row => <p className={`font-bold  `}>{row?.title}</p>
         }
     ]
 
