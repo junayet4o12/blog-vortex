@@ -1,6 +1,6 @@
 // import React from 'react';
 
-
+import { BsReplyAllFill } from 'react-icons/bs';
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 
@@ -87,7 +87,7 @@ const FeaturesBlog = () => {
             name: <p className="font-bold ">See Details</p>,
             cell: row => (
                 <Link to={`/details/${row._id}`}>
-                    <button className="btn btn-neutral btn-sm bg-black">Details</button>
+                    <button className="btn btn-neutral btn-xs bg-gray-800 hover:bg-black border-none text-white font-bold  flex  items-center justify-center gap-1"><span className=' rotate-180 '><BsReplyAllFill></BsReplyAllFill></span>Details</button>
                 </Link>
             )
         }
